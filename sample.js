@@ -35,8 +35,9 @@ $(document).ready(function(){
   function get_achievement(){
     // ここに、ランクの値の文字列（平均点が80点以上なら"A"、60点以上なら"B"、40点以上なら"C"、それ以下なら"D"）を出力する処理を書き込む
     let  average_point = $("#average_indicate").text()
-     $('#btn-evaluation').click(function(){
-           console.log(average_point);
+     //$('#btn-evaluation').click(function(){
+     $('#btn-evaluation').text(function(){
+           //console.log(average_point);
 
         var judge = 0;
         if(average_point >= 80) {
@@ -54,20 +55,13 @@ $(document).ready(function(){
 
   function get_pass_or_failure(){
     // ここに、全ての教科が60点以上なら"合格"の文字列、一つでも60点未満の教科があったら"不合格"の文字列を出す処理を書き込む
-    let subject_points =  $("#average_indicate").text()
-    $('#btn-judge').click(function(){
-        var judge = 0;
-        for(let i=0; i<5; i++){
-        if(subject_points[i] >= 60) {
-          judge = "合格";
-        } else {
-          judge ="不合格";
-          break;
-        }}
-        $('#judge').text(judge);
-  })
-  }
-
+    let points = $("#average_indicate").text()
+    let judge = "合格";
+        if(points<60){
+          judge= "不合格";
+        }
+      $('#judge').text(judge);
+    }  
   function judgement(){
     let achievement = $('#evaluation').text();
     let judge2 = $('#judge').text();
